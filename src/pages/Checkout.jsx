@@ -55,7 +55,7 @@ export default function CheckoutModal({ onClose }) {
     if (!validatePayment()) return;
     setLoading(true);
     try {
-      const oid = 'MV-'  Date.now();
+      const oid = 'MV-' + Date.now();
       await addDoc(collection(db, 'orders'), {
         orderId: oid,
         customer: form,
@@ -178,7 +178,7 @@ export default function CheckoutModal({ onClose }) {
                   background: i <= step ? 'linear-gradient(135deg,#7C3AED,#22D3EE)' : '#141418',
                   border: i <= step ? 'none' : '1px solid #252530',
                   color: '#fff', fontWeight: 700, fontSize: '0.75rem', flexShrink: 0
-                }}>{i < step ? '✓' : i  1}</div>
+                }}>{i < step ? '✓' : i + 1}</div>
                 <span style={{
                   color: i === step ? '#fff' : '#444', fontWeight: i === step ? 600 : 400,
                   marginLeft: '6px', fontSize: '0.82rem'

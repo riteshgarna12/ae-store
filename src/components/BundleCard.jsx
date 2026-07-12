@@ -16,8 +16,8 @@ export default function BundleCard({ bundle }) {
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const cx = rect.left  rect.width / 2;
-    const cy = rect.top  rect.height / 2;
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
     const px = (e.clientX - cx) / (rect.width / 2);
     const py = (e.clientY - cy) / (rect.height / 2);
     setTilt({ x: -py * 12, y: px * 12 });

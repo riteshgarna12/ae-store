@@ -1,9 +1,9 @@
-﻿import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { bundles, INSTAGRAM_HANDLE } from '../data/config';
 import BundleCard from '../components/BundleCard';
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 
-// â”€â”€ Animation helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Animation helpers ──────────────────────────────────
 const fadeUp = {
   hidden: { opacity: 0, y: 50 },
   visible: (i = 0) => ({
@@ -35,7 +35,7 @@ function AnimatedText({ text, style, className }) {
       {words.map((word, wi) => (
         <span key={wi} style={{ display: 'inline-block', marginRight: '0.3em' }}>
           {word.split('').map((char, ci) => {
-            const idx = words.slice(0, wi).join(' ').length  ci;
+            const idx = words.slice(0, wi).join(' ').length + ci;
             return (
               <motion.span
                 key={ci}
@@ -75,7 +75,7 @@ function InViewWrap({ children, delay = 0, style }) {
   );
 }
 
-// â”€â”€ FAQ Accordion component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── FAQ Accordion component ────────────────────────────
 function FAQAccordion({ question, answer }) {
   const [open, setOpen] = useState(false);
   return (
@@ -142,7 +142,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
     ? bundles
     : bundles.filter(b => b.category === activeCategory);
 
-  const dragConstraintLeft = -(filteredBundles.length * 332 - windowWidth  100);
+  const dragConstraintLeft = -(filteredBundles.length * 332 - windowWidth + 100);
 
   const reviews = [
     { name: "Suresh Kumar", date: "Today", rating: 5, comment: "The Transitions Pro pack completely saved my timeline speed. Clean rendering, lifetime support and no monthly subscription fees!", product: "Transitions Pro Pack" },
@@ -185,7 +185,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
               style={{ width: '100%' }}
             >
               <motion.div variants={fadeUp} className="section-label">
-                ✓¦ PREMIUM AFTER EFFECTS & PREMIERE PRO BUNDLES
+                ⚡ PREMIUM AFTER EFFECTS & PREMIERE PRO BUNDLES
               </motion.div>
 
               <motion.h1 variants={fadeUp} style={{
@@ -235,13 +235,13 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
             >
               {[
                 { label: 'Bundles', value: '5 Packs' },
-                { label: 'Elements', value: '500 FX' },
-                { label: 'Happy Buyers', value: '200 Editors' },
+                { label: 'Elements', value: '500+ FX' },
+                { label: 'Happy Buyers', value: '200+ Editors' },
                 { label: 'Compatibility', value: 'No Plugins' }
               ].map((s, i) => (
                 <motion.div
                   key={s.label}
-                  custom={i  4}
+                  custom={i + 4}
                   variants={fadeUp}
                   whileHover={{ scale: 1.1 }}
                   style={{ textAlign: 'center', cursor: 'default' }}
@@ -260,7 +260,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
             style={{ position: 'absolute', bottom: '30px', color: '#333', fontSize: '0.75rem', letterSpacing: '0.1em', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', zIndex: 1 }}
           >
             <span>SCROLL</span>
-            <span style={{ fontSize: '1.2rem' }}>â†“</span>
+            <span style={{ fontSize: '1.2rem' }}>↓</span>
           </motion.div>
         </div>
       </Section>
@@ -269,7 +269,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
       <Section id="bundles" style={{ padding: '80px 0 40px', position: 'relative' }}>
         <div style={{ padding: '0 5%', marginBottom: '32px' }}>
           <InViewWrap>
-            <div className="section-label">✓¦ DIGITAL ASSETS CATALOG</div>
+            <div className="section-label">⚡ DIGITAL ASSETS CATALOG</div>
           </InViewWrap>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
             <div>
@@ -333,16 +333,16 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
           </AnimatePresence>
 
           <div className="drag-hint">
-            <span>â† DRAG CAROUSEL TO EXPLORE →</span>
+            <span>← DRAG CAROUSEL TO EXPLORE →</span>
           </div>
         </div>
       </Section>
 
-      {/* ═══ JUDGE.ME STYLE REVIEWS ══════════════════ */}
+      {/* ═ ═ ═  JUDGE.ME STYLE REVIEWS ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═  */}
       <Section id="reviews" style={{ padding: '80px 5%', borderTop: '1px solid #111' }}>
         <div style={{ textAlign: 'center', marginBottom: '56px' }}>
           <InViewWrap>
-            <div className="section-label">✓¦ CUSTOMER REVIEWS</div>
+            <div className="section-label">⚡ CUSTOMER REVIEWS</div>
           </InViewWrap>
           <InViewWrap delay={0.1}>
             <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 10px' }}>
@@ -364,7 +364,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                     <div style={{ display: 'flex', gap: '2px' }}>
                       {[...Array(rev.rating)].map((_, starIdx) => (
-                        <span key={starIdx} style={{ color: '#F59E0B', fontSize: '0.9rem' }}>â˜…</span>
+                        <span key={starIdx} style={{ color: '#F59E0B', fontSize: '0.9rem' }}>★</span>
                       ))}
                     </div>
                     <span style={{ color: '#434343', fontSize: '0.72rem' }}>{rev.date}</span>
@@ -395,7 +395,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
       <Section id="faqs" style={{ padding: '80px 5%', borderTop: '1px solid #111' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '48px', maxWidth: '1000px', margin: '0 auto', alignItems: 'start' }}>
           <div>
-            <div className="section-label">✓¦ HELP DESK</div>
+            <div className="section-label">⚡ HELP DESK</div>
             <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 12px' }}>
               Frequently Asked Questions
             </h2>
@@ -425,7 +425,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
       <Section id="how" style={{ padding: '80px 5%', borderTop: '1px solid #111' }}>
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <InViewWrap>
-            <div className="section-label">✓¦ SIMPLE PROCESS</div>
+            <div className="section-label">⚡ SIMPLE PROCESS</div>
           </InViewWrap>
           <InViewWrap delay={0.1}>
             <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 10px' }}>
@@ -439,10 +439,10 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
 
         <div className="how-grid">
           {[
-            { step: '01', icon: '›’', title: 'Pick Your Pack', desc: 'Browse and drag through our bundles, add what you want' },
-            { step: '02', icon: '“‹', title: 'Fill Details', desc: 'Enter your name, email, and location' },
-            { step: '03', icon: '“²', title: 'Pay via UPI', desc: 'Scan QR or send to our UPI ID, enter UTR' },
-            { step: '04', icon: '“¦', title: 'Get Files', desc: 'Download link sent to your email/Instagram DM' },
+            { step: '01', icon: '🛒', title: 'Pick Your Pack', desc: 'Browse and drag through our bundles, add what you want' },
+            { step: '02', icon: '📋', title: 'Fill Details', desc: 'Enter your name, email, and location' },
+            { step: '03', icon: '📱', title: 'Pay via UPI', desc: 'Scan QR or send to our UPI ID, enter UTR' },
+            { step: '04', icon: '📦', title: 'Get Files', desc: 'Download link sent to your email/Instagram DM' },
           ].map((s, i) => (
             <InViewWrap key={s.step} delay={i * 0.1}>
               <motion.div
@@ -473,7 +473,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                   width: '80px', height: '80px', borderRadius: '50%', margin: '0 auto 20px',
                   background: 'linear-gradient(135deg, #7C3AED, #22D3EE)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2.2rem'
-                }}>Ž¬</motion.div>
+                }}>🎬</motion.div>
             </InViewWrap>
             <InViewWrap delay={0.1}>
               <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 14px' }}>
@@ -507,12 +507,12 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
           {/* Features */}
           <div className="about-grid" style={{ marginBottom: '32px' }}>
             {[
-              { icon: 'Ž¨', title: '100% Original', desc: 'Every element is handcrafted, not copied or resold.' },
-              { icon: 'âš¡', title: 'Instant Delivery', desc: 'Files sent to your email within hours of payment.' },
-              { icon: '”’', title: 'Safe UPI Payment', desc: 'Pay directly to my UPI. No card data, no risk.' },
-              { icon: '”„', title: 'Lifetime Updates', desc: 'Buy once, get all future versions free.' },
-              { icon: '“±', title: 'Instagram Support', desc: 'DM me on Instagram — fastest way to reach me.' },
-              { icon: '‡®‡³', title: 'Made in India', desc: 'Priced for Indian creators. Premium at honest prices.' },
+              { icon: '🎨', title: '100% Original', desc: 'Every element is handcrafted, not copied or resold.' },
+              { icon: '⚡', title: 'Instant Delivery', desc: 'Files sent to your email within hours of payment.' },
+              { icon: '🔒', title: 'Safe UPI Payment', desc: 'Pay directly to my UPI. No card data, no risk.' },
+              { icon: '🔄', title: 'Lifetime Updates', desc: 'Buy once, get all future versions free.' },
+              { icon: '💬', title: 'Instagram Support', desc: 'DM me on Instagram — fastest way to reach me.' },
+              { icon: '🇮🇳', title: 'Made in India', desc: 'Priced for Indian creators. Premium at honest prices.' },
             ].map((f, i) => (
               <InViewWrap key={f.title} delay={i * 0.06}>
                 <motion.div
@@ -532,7 +532,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
             <div className="ig-card">
               <div className="ig-header">
                 <div className="ig-avatar-ring">
-                  <div className="ig-avatar">Ž¬</div>
+                  <div className="ig-avatar">🎬</div>
                 </div>
                 <div className="ig-info">
                   <div className="ig-username-row">
@@ -551,9 +551,9 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                   </div>
                   <div className="ig-bio">
                     <strong>MotionVault | Video Presets</strong><br />
-                    âš¡ Crafting premium templates & presets for creators & filmmakers.<br />
-                    Ž¥ Drag & drop After Effects packs & Premiere Pro assets.<br />
-                    “© DM for immediate support & custom requests.
+                    ⚡ Crafting premium templates & presets for creators & filmmakers.<br />
+                    🎥 Drag & drop After Effects packs & Premiere Pro assets.<br />
+                    📩 DM for immediate support & custom requests.
                   </div>
                 </div>
               </div>
@@ -574,7 +574,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                       </svg>
                     </div>
                     <span className="ig-reel-plays">
-                      <span>â–¶</span> {post.views}
+                      <span>▶</span> {post.views}
                     </span>
                   </a>
                 ))}
@@ -669,7 +669,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
         {/* Footer Bottom */}
         <div className="footer-bottom">
           <div className="footer-copyright">
-            Â© 2026 MotionVault Â· Handcrafted with passion in India.<br />
+            © 2026 MotionVault · Handcrafted with passion in India.<br />
             Designed for professional video editors and creators.
           </div>
           <div className="footer-disclaimer">

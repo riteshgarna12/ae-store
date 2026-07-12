@@ -66,7 +66,7 @@ export default function BundleDetail({ onCartClick }) {
           fontSize: '0.88rem', marginBottom: '32px',
           display: 'flex', alignItems: 'center', gap: '6px'
         }}
-      >â† Back Home</motion.button>
+      >← Back Home</motion.button>
 
       <div className="detail-responsive-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '48px', maxWidth: '1100px', margin: '0 auto', alignItems: 'start' }}>
         
@@ -221,7 +221,7 @@ export default function BundleDetail({ onCartClick }) {
                 display: 'flex', alignItems: 'center', gap: '10px', padding: '9px 0',
                 borderBottom: i < bundle.includes.length - 1 ? '1px solid #141418' : 'none'
               }}>
-                <span style={{ color: '#7C3AED', flexShrink: 0 }}>✓¦</span>
+                <span style={{ color: '#7C3AED', flexShrink: 0 }}>✓</span>
                 <span style={{ color: '#7C3AED', fontSize: '0.82rem' }}>{item}</span>
               </div>
             ))}
@@ -237,7 +237,7 @@ export default function BundleDetail({ onCartClick }) {
               <div key={i} style={{ borderBottom: i === 0 ? '1px solid #141418' : 'none', padding: '10px 0' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
                   <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.8rem' }}>{rev.author}</span>
-                  <span style={{ color: '#F59E0B', fontSize: '0.75rem' }}>â˜…â˜…â˜…â˜…â˜…</span>
+                  <span style={{ color: '#F59E0B', fontSize: '0.75rem' }}>★★★★★</span>
                 </div>
                 <p style={{ color: '#7C3AED', fontSize: '0.78rem', lineHeight: 1.4, margin: 0 }}>"{rev.text}"</p>
               </div>
