@@ -8,14 +8,14 @@ function Accordion({ title, children }) {
   const [open, setOpen] = useState(false);
   return (
     <div style={{
-      background: '#141414', border: '1px solid #2b2b2b',
+      background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)',
       borderRadius: '12px', marginBottom: '10px', overflow: 'hidden'
     }}>
       <div
         style={{ padding: '14px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}
         onClick={() => setOpen(!open)}
       >
-        <span style={{ fontFamily: 'Outfit', fontWeight: 600, fontSize: '0.88rem', color: '#fff' }}>{title}</span>
+        <span style={{ fontFamily: 'Outfit', fontWeight: 600, fontSize: '0.88rem', color: 'var(--text-primary)' }}>{title}</span>
         <span style={{ color: '#7C3AED', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s', fontSize: '0.75rem' }}>▼</span>
       </div>
       <AnimatePresence initial={false}>
@@ -26,7 +26,7 @@ function Accordion({ title, children }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 22 }}
           >
-            <div style={{ padding: '0 20px 16px', color: '#777', fontSize: '0.8rem', lineHeight: 1.5 }}>
+            <div style={{ padding: '0 20px 16px', color: 'var(--text-muted)', fontSize: '0.8rem', lineHeight: 1.5 }}>
               {children}
             </div>
           </motion.div>
@@ -45,10 +45,10 @@ export default function BundleDetail({ onCartClick }) {
   const discount = bundle ? Math.round((1 - bundle.price / bundle.originalPrice) * 100) : 0;
 
   if (!bundle) return (
-    <div style={{ minHeight: '100vh', background: '#08080A', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif' }}>
       <div style={{ textAlign: 'center' }}>
         <div style={{ fontSize: '4rem', marginBottom: '16px' }}>😕</div>
-        <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, marginBottom: '16px' }}>Bundle not found</h2>
+        <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, marginBottom: '16px', color: 'var(--text-primary)' }}>Bundle not found</h2>
         <button onClick={() => navigate('/')} style={{ color: '#7C3AED', background: 'none', border: 'none', cursor: 'pointer', fontSize: '1rem' }}>← Back Home</button>
       </div>
     </div>
@@ -57,7 +57,7 @@ export default function BundleDetail({ onCartClick }) {
   const isFree = bundle.price === 0;
 
   return (
-    <div style={{ minHeight: '100vh', background: '#08080A', padding: '84px 5% 72px', fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg-primary)', padding: '84px 5% 72px', fontFamily: 'Inter, sans-serif' }}>
       <motion.button
         whileHover={{ x: -4 }}
         onClick={() => navigate('/')}
@@ -69,7 +69,7 @@ export default function BundleDetail({ onCartClick }) {
       >← Back Home</motion.button>
 
       <div className="detail-responsive-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '48px', maxWidth: '1100px', margin: '0 auto', alignItems: 'start' }}>
-        
+
         {/* LEFT — Preview  Specs  FAQs */}
         <div>
           {/* Cover Preview */}
@@ -95,14 +95,14 @@ export default function BundleDetail({ onCartClick }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 }}
               style={{
-                background: '#141414', border: '1px solid #2b2b2b',
+                background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)',
                 borderRadius: '14px', padding: '24px', backdropFilter: 'blur(8px)', marginBottom: '24px'
               }}
             >
-              <h3 style={{ fontFamily: 'Outfit', color: '#fff', fontWeight: 700, fontSize: '0.95rem', marginBottom: '16px' }}>Technical Specifications</h3>
+              <h3 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.95rem', marginBottom: '16px' }}>Technical Specifications</h3>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
                 {Object.entries(bundle.specs).map(([key, val]) => (
-                  <div key={key} style={{ borderBottom: '1px solid #141418', paddingBottom: '8px' }}>
+                  <div key={key} style={{ borderBottom: '1px solid var(--border-secondary)', paddingBottom: '8px' }}>
                     <span style={{ color: '#7C3AED', fontSize: '0.72rem', display: 'block', marginBottom: '2px', textTransform: 'uppercase' }}>{key}</span>
                     <span style={{ color: '#7C3AED', fontSize: '0.85rem', fontWeight: 500 }}>{val}</span>
                   </div>
@@ -139,7 +139,7 @@ export default function BundleDetail({ onCartClick }) {
         >
           {/* Purchase Box */}
           <div style={{
-            background: '#141414', border: '1px solid #2b2b2b',
+            background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)',
             borderRadius: '18px', padding: '28px 24px', backdropFilter: 'blur(8px)', marginBottom: '24px'
           }}>
             <div style={{
@@ -148,17 +148,17 @@ export default function BundleDetail({ onCartClick }) {
               color: bundle.color, fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.05em'
             }}>{bundle.badge || 'PACK'}</div>
 
-            <h1 style={{ fontFamily: 'Outfit', color: '#fff', fontWeight: 900, fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', margin: '0 0 10px', lineHeight: 1.1 }}>
+            <h1 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontWeight: 900, fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', margin: '0 0 10px', lineHeight: 1.1 }}>
               {bundle.name}
             </h1>
             <p style={{ color: '#7C3AED', fontSize: '0.9rem', margin: '0 0 10px', lineHeight: 1.5 }}>{bundle.tagline}</p>
-            <p style={{ color: '#434343', fontSize: '0.8rem', margin: '0 0 24px', fontStyle: 'italic' }}>{bundle.features}</p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', margin: '0 0 24px', fontStyle: 'italic' }}>{bundle.features}</p>
 
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
-              <span style={{ fontFamily: 'Outfit', color: '#fff', fontWeight: 900, fontSize: '2.2rem' }}>₹{bundle.price}</span>
+              <span style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontWeight: 900, fontSize: '2.2rem' }}>₹{bundle.price}</span>
               {bundle.originalPrice > bundle.price && (
                 <>
-                  <span style={{ color: '#434343', textDecoration: 'line-through', fontSize: '1rem' }}>₹{bundle.originalPrice}</span>
+                  <span style={{ color: 'var(--text-muted)', textDecoration: 'line-through', fontSize: '1rem' }}>₹{bundle.originalPrice}</span>
                   <span style={{ background: '#22c55e18', color: '#22c55e', borderRadius: '6px', padding: '3px 10px', fontSize: '0.75rem', fontWeight: 700 }}>
                     Save {discount}%
                   </span>
@@ -214,12 +214,12 @@ export default function BundleDetail({ onCartClick }) {
           </div>
 
           {/* What's included checklist */}
-          <div style={{ background: '#141414', border: '1px solid #2b2b2b', borderRadius: '14px', padding: '20px', marginBottom: '24px' }}>
+          <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '14px', padding: '20px', marginBottom: '24px' }}>
             <h3 style={{ color: '#7C3AED', fontWeight: 600, fontSize: '0.72rem', letterSpacing: '0.1em', margin: '0 0 14px', textTransform: 'uppercase' }}>WHAT'S INCLUDED</h3>
             {bundle.includes.map((item, i) => (
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: '10px', padding: '9px 0',
-                borderBottom: i < bundle.includes.length - 1 ? '1px solid #141418' : 'none'
+                borderBottom: i < bundle.includes.length - 1 ? '1px solid var(--border-secondary)' : 'none'
               }}>
                 <span style={{ color: '#7C3AED', flexShrink: 0 }}>✓</span>
                 <span style={{ color: '#7C3AED', fontSize: '0.82rem' }}>{item}</span>
@@ -228,15 +228,15 @@ export default function BundleDetail({ onCartClick }) {
           </div>
 
           {/* Bundle verified reviews block */}
-          <div style={{ background: '#141414', border: '1px solid #2b2b2b', borderRadius: '14px', padding: '20px' }}>
-            <h3 style={{ fontFamily: 'Outfit', color: '#fff', fontWeight: 700, fontSize: '0.9rem', marginBottom: '14px' }}>Verified Reviews</h3>
+          <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '14px', padding: '20px' }}>
+            <h3 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.9rem', marginBottom: '14px' }}>Verified Reviews</h3>
             {[
               { author: "Rahul P.", text: "Perfect templates, super smooth drag-and-drop. Best assets for video creators!" },
               { author: "Karan S.", text: "Clean project files, very easy to breakdown and learn. High-quality render speeds." }
             ].map((rev, i) => (
-              <div key={i} style={{ borderBottom: i === 0 ? '1px solid #141418' : 'none', padding: '10px 0' }}>
+              <div key={i} style={{ borderBottom: i === 0 ? '1px solid var(--border-secondary)' : 'none', padding: '10px 0' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                  <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.8rem' }}>{rev.author}</span>
+                  <span style={{ color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.8rem' }}>{rev.author}</span>
                   <span style={{ color: '#F59E0B', fontSize: '0.75rem' }}>★★★★★</span>
                 </div>
                 <p style={{ color: '#7C3AED', fontSize: '0.78rem', lineHeight: 1.4, margin: 0 }}>"{rev.text}"</p>

@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 
 const inputStyle = () => ({
   width: '100%', boxSizing: 'border-box',
-  background: '#0c0c10', border: '1px solid #1e1e24',
-  borderRadius: '10px', padding: '12px 14px', color: '#fff',
+  background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)',
+  borderRadius: '10px', padding: '12px 14px', color: 'var(--text-primary)',
   fontFamily: 'Inter', fontSize: '0.9rem', outline: 'none'
 });
 
@@ -77,17 +77,17 @@ export default function AccountDrawer({ onClose }) {
         style={{
           position: 'fixed', top: 0, right: 0, bottom: 0,
           width: 'min(460px, 92vw)', zIndex: 301,
-          background: 'rgba(10,10,14,0.97)', backdropFilter: 'blur(24px) saturate(180%)',
-          borderLeft: '1px solid rgba(124,58,237,0.1)',
+          background: 'var(--bg-modal)', backdropFilter: 'blur(24px) saturate(180%)',
+          borderLeft: '1px solid var(--border-drawer)',
           display: 'flex', flexDirection: 'column'
         }}
       >
         {/* Header */}
         <div style={{
-          padding: '20px 24px', borderBottom: '1px solid #151518',
+          padding: '20px 24px', borderBottom: '1px solid var(--border-secondary)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between'
         }}>
-          <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.3rem', margin: 0 }}>
+          <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.3rem', margin: 0, color: 'var(--text-primary)' }}>
             👤 Editor Account
           </h2>
           <motion.button
@@ -95,8 +95,8 @@ export default function AccountDrawer({ onClose }) {
             whileTap={{ scale: 0.9 }}
             onClick={onClose}
             style={{
-              background: 'rgba(255,255,255,0.05)', border: '1px solid #1e1e24',
-              color: '#888', borderRadius: '10px', width: '36px', height: '36px',
+              background: 'var(--bg-social-icon)', border: '1px solid var(--border-primary)',
+              color: 'var(--text-muted)', borderRadius: '10px', width: '36px', height: '36px',
               cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}
           >✕</motion.button>
@@ -108,7 +108,7 @@ export default function AccountDrawer({ onClose }) {
             <div>
               {/* Profile Card */}
               <div style={{
-                background: '#0c0c10', border: '1px solid #1e1e24',
+                background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)',
                 borderRadius: '14px', padding: '20px', textAlign: 'center', marginBottom: '24px'
               }}>
                 <div style={{
@@ -117,8 +117,8 @@ export default function AccountDrawer({ onClose }) {
                 }}>
                   {loggedInUser.substring(0, 2).toUpperCase()}
                 </div>
-                <h4 style={{ fontFamily: 'Outfit', color: '#fff', fontSize: '0.95rem', margin: '0 0 4px' }}>Video Editor</h4>
-                <p style={{ color: '#888', fontSize: '0.78rem', marginBottom: '14px' }}>{loggedInUser}</p>
+                <h4 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontSize: '0.95rem', margin: '0 0 4px' }}>Video Editor</h4>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', marginBottom: '14px' }}>{loggedInUser}</p>
                 <button
                   onClick={handleLogout}
                   style={{
@@ -130,15 +130,15 @@ export default function AccountDrawer({ onClose }) {
               </div>
 
               {/* Order History */}
-              <h3 style={{ fontFamily: 'Outfit', color: '#fff', fontSize: '1rem', marginBottom: '14px' }}>Purchase History</h3>
+              <h3 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontSize: '1rem', marginBottom: '14px' }}>Purchase History</h3>
               {orders === null ? (
-                <p style={{ color: '#888', fontSize: '0.82rem' }}>Loading purchase history...</p>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>Loading purchase history...</p>
               ) : orders.length === 0 ? (
                 <div style={{
-                  background: '#0c0c10', border: '1px solid #1e1e24', borderRadius: '12px',
+                  background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', borderRadius: '12px',
                   padding: '24px', textAlign: 'center'
                 }}>
-                  <p style={{ color: '#888', fontSize: '0.82rem', margin: 0 }}>No orders found under this email.</p>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', margin: 0 }}>No orders found under this email.</p>
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -146,7 +146,7 @@ export default function AccountDrawer({ onClose }) {
                     <div
                       key={order.id}
                       style={{
-                        background: '#0c0c10', border: '1px solid #1e1e24',
+                        background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)',
                         borderRadius: '12px', padding: '14px 16px'
                       }}
                     >
@@ -165,7 +165,7 @@ export default function AccountDrawer({ onClose }) {
                           <div key={idx} style={{ color: '#7C3AED', fontSize: '0.8rem' }}>• {item.name}</div>
                         ))}
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #15151b', paddingTop: '8px', fontSize: '0.75rem', color: '#888' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid var(--border-secondary)', paddingTop: '8px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                         <span>Total: ₹{order.total}</span>
                         <span>{order.createdAt ? new Date(order.createdAt.seconds * 1000).toLocaleDateString() : ''}</span>
                       </div>
@@ -179,13 +179,13 @@ export default function AccountDrawer({ onClose }) {
               <div style={{ textAlign: 'center', marginBottom: '12px' }}>
                 <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>🔒</div>
                 <h3 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.2rem', marginBottom: '6px' }}>Access Purchases</h3>
-                <p style={{ color: '#888', fontSize: '0.82rem', lineHeight: 1.5 }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', lineHeight: 1.5 }}>
                   Enter the email address you used during purchase to check your order verification status and retrieve your files.
                 </p>
               </div>
 
               <div>
-                <label style={{ color: '#888', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Email Address</label>
+                <label style={{ color: 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Email Address</label>
                 <input
                   type="email"
                   placeholder="rahul@gmail.com"

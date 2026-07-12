@@ -81,16 +81,16 @@ function FAQAccordion({ question, answer }) {
   return (
     <div
       style={{
-        background: '#0e0e13', border: '1px solid rgba(255,255,255,0.04)',
+        background: 'var(--bg-faq)', border: '1px solid var(--border-primary)',
         borderRadius: '14px', marginBottom: '12px', overflow: 'hidden', cursor: 'pointer',
         transition: 'border-color 0.3s'
       }}
       onClick={() => setOpen(!open)}
       onMouseEnter={(e) => e.currentTarget.style.borderColor = 'rgba(124,58,237,0.2)'}
-      onMouseLeave={(e) => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)'}
+      onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border-primary)'}
     >
       <div style={{ padding: '18px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h4 style={{ fontFamily: 'Outfit', fontWeight: 600, fontSize: '0.95rem', margin: 0, color: '#fff' }}>{question}</h4>
+        <h4 style={{ fontFamily: 'Outfit', fontWeight: 600, fontSize: '0.95rem', margin: 0, color: 'var(--text-primary)' }}>{question}</h4>
         <span style={{ color: '#7C3AED', transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s', fontSize: '0.8rem' }}>▼</span>
       </div>
       <AnimatePresence initial={false}>
@@ -101,7 +101,7 @@ function FAQAccordion({ question, answer }) {
             exit={{ height: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 22 }}
           >
-            <div style={{ padding: '0 24px 20px', color: '#777', fontSize: '0.85rem', lineHeight: 1.6 }}>
+            <div style={{ padding: '0 24px 20px', color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6 }}>
               {answer}
             </div>
           </motion.div>
@@ -159,7 +159,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
   ];
 
   return (
-    <div style={{ background: '#08080A', fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ background: 'var(--bg-primary)', fontFamily: 'Inter, sans-serif' }}>
 
       {/* ═══ HERO ═══════════════════════════════════════ */}
       <Section id="hero" style={{ minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
@@ -190,7 +190,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
 
               <motion.h1 variants={fadeUp} style={{
                 fontFamily: 'Outfit', fontSize: 'clamp(2.2rem, 7vw, 5.5rem)', fontWeight: 900, lineHeight: 1.05,
-                margin: '0 0 20px', color: '#fff', letterSpacing: '-0.03em'
+                margin: '0 0 20px', color: 'var(--text-primary)', letterSpacing: '-0.03em'
               }}>
                 <AnimatedText text="Motion that makes" />
                 <br />
@@ -200,7 +200,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
               </motion.h1>
 
               <motion.p variants={fadeUp} style={{
-                fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', color: '#555',
+                fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', color: 'var(--text-muted)',
                 maxWidth: '520px', margin: '0 auto 40px', lineHeight: 1.8
               }}>
                 Hand-crafted After Effects packs & Premiere Pro presets. Transitions, titles, glitch FX — download instantly after UPI payment.
@@ -247,7 +247,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                   style={{ textAlign: 'center', cursor: 'default' }}
                 >
                   <div style={{ fontFamily: 'Outfit', color: '#7C3AED', fontWeight: 900, fontSize: 'clamp(1.4rem, 4vw, 2.2rem)' }}>{s.value}</div>
-                  <div style={{ color: '#555', fontSize: '0.78rem', letterSpacing: '0.08em', marginTop: '4px', textTransform: 'uppercase' }}>{s.label}</div>
+                  <div style={{ color: 'var(--text-muted)', fontSize: '0.78rem', letterSpacing: '0.08em', marginTop: '4px', textTransform: 'uppercase' }}>{s.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -274,7 +274,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
             <div>
               <InViewWrap delay={0.1}>
-                <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 8px' }}>
+                <h2 className="section-heading" style={{ color: 'var(--text-primary)', margin: '0 0 8px' }}>
                   <AnimatedText text="Browse Assets" />
                 </h2>
               </InViewWrap>
@@ -286,7 +286,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
             {/* Filtering tabs */}
             <InViewWrap delay={0.3}>
               <div style={{
-                display: 'flex', background: '#0e0e13', border: '1px solid rgba(255,255,255,0.04)',
+                display: 'flex', background: 'var(--bg-faq)', border: '1px solid var(--border-primary)',
                 borderRadius: '12px', padding: '6px', gap: '4px'
               }}>
                 {categories.map(cat => (
@@ -295,7 +295,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                     onClick={() => setActiveCategory(cat.id)}
                     style={{
                       background: activeCategory === cat.id ? 'linear-gradient(135deg,#d1d1d1,#828383)' : 'transparent',
-                      border: 'none', color: activeCategory === cat.id ? '#fff' : '#666',
+                      border: 'none', color: activeCategory === cat.id ? 'var(--text-primary)' : 'var(--text-muted)',
                       borderRadius: '8px', padding: '8px 16px', fontSize: '0.8rem',
                       fontWeight: 600, cursor: 'pointer', transition: 'color 0.2s, background 0.3s'
                     }}
@@ -339,13 +339,13 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
       </Section>
 
       {/* ═ ═ ═  JUDGE.ME STYLE REVIEWS ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═  */}
-      <Section id="reviews" style={{ padding: '80px 5%', borderTop: '1px solid #111' }}>
+      <Section id="reviews" style={{ padding: '80px 5%', borderTop: '1px solid var(--border-secondary)' }}>
         <div style={{ textAlign: 'center', marginBottom: '56px' }}>
           <InViewWrap>
             <div className="section-label">⚡ CUSTOMER REVIEWS</div>
           </InViewWrap>
           <InViewWrap delay={0.1}>
-            <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 10px' }}>
+            <h2 className="section-heading" style={{ color: 'var(--text-primary)', margin: '0 0 10px' }}>
               <AnimatedText text="What Creators Say" />
             </h2>
           </InViewWrap>
@@ -367,21 +367,21 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                         <span key={starIdx} style={{ color: '#F59E0B', fontSize: '0.9rem' }}>★</span>
                       ))}
                     </div>
-                    <span style={{ color: '#434343', fontSize: '0.72rem' }}>{rev.date}</span>
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem' }}>{rev.date}</span>
                   </div>
-                  <p style={{ color: '#ddd', fontSize: '0.85rem', lineHeight: 1.6, margin: '0 0 16px', fontStyle: 'italic' }}>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6, margin: '0 0 16px', fontStyle: 'italic' }}>
                     "{rev.comment}"
                   </p>
                 </div>
-                <div style={{ borderTop: '1px solid #111', paddingTop: '12px', display: 'flex', alignItems: 'center', justifyBetween: 'space-between' }}>
+                <div style={{ borderTop: '1px solid var(--border-secondary)', paddingTop: '12px', display: 'flex', alignItems: 'center', justifyBetween: 'space-between' }}>
                   <div>
-                    <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.82rem', display: 'block' }}>{rev.name}</span>
-                    <span style={{ color: '#555', fontSize: '0.7rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '3px' }}>
+                    <span style={{ color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.82rem', display: 'block' }}>{rev.name}</span>
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.7rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '3px' }}>
                       <span style={{ fontSize: '0.8rem' }}>✓</span> Verified Buyer
                     </span>
                   </div>
                   <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
-                    <span style={{ color: '#434343', fontSize: '0.7rem', display: 'block' }}>Reviewed</span>
+                    <span style={{ color: 'var(--text-muted)', fontSize: '0.7rem', display: 'block' }}>Reviewed</span>
                     <span style={{ color: '#7C3AED', fontSize: '0.72rem', fontWeight: 600 }}>{rev.product}</span>
                   </div>
                 </div>
@@ -392,11 +392,11 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
       </Section>
 
       {/* ═══ FAQ SECTION ══════════════════════════════ */}
-      <Section id="faqs" style={{ padding: '80px 5%', borderTop: '1px solid #111' }}>
+      <Section id="faqs" style={{ padding: '80px 5%', borderTop: '1px solid var(--border-secondary)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '48px', maxWidth: '1000px', margin: '0 auto', alignItems: 'start' }}>
           <div>
             <div className="section-label">⚡ HELP DESK</div>
-            <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 12px' }}>
+            <h2 className="section-heading" style={{ color: 'var(--text-primary)', margin: '0 0 12px' }}>
               Frequently Asked Questions
             </h2>
             <p className="section-sub">
@@ -422,13 +422,13 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
       </Section>
 
       {/* ═══ HOW IT WORKS ═════════════════════════════ */}
-      <Section id="how" style={{ padding: '80px 5%', borderTop: '1px solid #111' }}>
+      <Section id="how" style={{ padding: '80px 5%', borderTop: '1px solid var(--border-secondary)' }}>
         <div style={{ textAlign: 'center', marginBottom: '48px' }}>
           <InViewWrap>
             <div className="section-label">⚡ SIMPLE PROCESS</div>
           </InViewWrap>
           <InViewWrap delay={0.1}>
-            <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 10px' }}>
+            <h2 className="section-heading" style={{ color: 'var(--text-primary)', margin: '0 0 10px' }}>
               <AnimatedText text="How It Works" />
             </h2>
           </InViewWrap>
@@ -454,8 +454,8 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                 <div style={{ color: '#7C3AED', fontWeight: 700, fontSize: '0.68rem', letterSpacing: '0.12em', marginBottom: '8px' }}>
                   STEP {s.step}
                 </div>
-                <h3 style={{ fontFamily: 'Outfit', color: '#fff', fontWeight: 700, fontSize: '0.95rem', margin: '0 0 6px' }}>{s.title}</h3>
-                <p style={{ color: '#555', fontSize: '0.82rem', margin: 0, lineHeight: 1.6 }}>{s.desc}</p>
+                <h3 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.95rem', margin: '0 0 6px' }}>{s.title}</h3>
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem', margin: 0, lineHeight: 1.6 }}>{s.desc}</p>
               </motion.div>
             </InViewWrap>
           ))}
@@ -463,7 +463,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
       </Section>
 
       {/* ═══ ABOUT ════════════════════════════════════ */}
-      <Section id="about" style={{ padding: '80px 5%', borderTop: '1px solid #111' }}>
+      <Section id="about" style={{ padding: '80px 5%', borderTop: '1px solid var(--border-secondary)' }}>
         <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
             <InViewWrap>
@@ -476,7 +476,7 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                 }}>🎬</motion.div>
             </InViewWrap>
             <InViewWrap delay={0.1}>
-              <h2 className="section-heading" style={{ color: '#fff', margin: '0 0 14px' }}>
+              <h2 className="section-heading" style={{ color: 'var(--text-primary)', margin: '0 0 14px' }}>
                 <AnimatedText text="About MotionVault" />
               </h2>
             </InViewWrap>
@@ -490,15 +490,15 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
           {/* Story card */}
           <InViewWrap delay={0.1}>
             <div style={{
-              background: '#0e0e13', border: '1px solid rgba(255,255,255,0.04)',
+              background: 'var(--bg-faq)', border: '1px solid var(--border-primary)',
               borderRadius: '20px', padding: 'clamp(24px, 5vw, 40px)', marginBottom: '28px',
               backdropFilter: 'blur(8px)'
             }}>
-              <h3 style={{ fontFamily: 'Outfit', color: '#fff', fontWeight: 800, fontSize: '1.2rem', margin: '0 0 14px' }}>The Story</h3>
-              <p style={{ color: '#555', lineHeight: 1.9, margin: '0 0 12px', fontSize: '0.92rem' }}>
+              <h3 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontWeight: 800, fontSize: '1.2rem', margin: '0 0 14px' }}>The Story</h3>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.9, margin: '0 0 12px', fontSize: '0.92rem' }}>
                 Every pack here is made from scratch — no reselling, no recycled assets. I spend hours perfecting every transition, every title animation, every glitch effect before it ships.
               </p>
-              <p style={{ color: '#555', lineHeight: 1.9, margin: 0, fontSize: '0.92rem' }}>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.9, margin: 0, fontSize: '0.92rem' }}>
                 My goal is simple: give editors tools that actually look cinematic, not the generic stuff you find on stock sites.
               </p>
             </div>
@@ -520,8 +520,8 @@ export default function Home({ onCartClick, onSupportClick, onLegalClick, active
                   className="feature-card"
                 >
                   <div style={{ fontSize: '1.4rem', marginBottom: '10px' }}>{f.icon}</div>
-                  <h4 style={{ fontFamily: 'Outfit', color: '#fff', fontWeight: 700, fontSize: '0.88rem', margin: '0 0 5px' }}>{f.title}</h4>
-                  <p style={{ color: '#555', fontSize: '0.78rem', margin: 0, lineHeight: 1.6 }}>{f.desc}</p>
+                  <h4 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.88rem', margin: '0 0 5px' }}>{f.title}</h4>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', margin: 0, lineHeight: 1.6 }}>{f.desc}</p>
                 </motion.div>
               </InViewWrap>
             ))}

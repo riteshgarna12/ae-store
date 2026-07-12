@@ -3,6 +3,7 @@ import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { bundles } from '../data/config';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Navbar({ 
   onCartClick, 
@@ -14,6 +15,7 @@ export default function Navbar({
   setActiveCategory 
 }) {
   const { cart } = useCart();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
@@ -65,7 +67,7 @@ export default function Navbar({
         className="nav" 
         style={{
           position: 'fixed', top: 0, width: '100%', zIndex: 200,
-          background: '#030303', borderBottom: '1px solid #2b2b2b'
+          background: 'var(--bg-nav)', borderBottom: '1px solid var(--border-secondary)'
         }}
       >
         {/* Left: Logo */}
@@ -103,7 +105,7 @@ export default function Navbar({
               style={{
                 background: megaMenuOpen ? 'linear-gradient(135deg,#7C3AED,#22D3EE)' : 'transparent',
                 border: 'none',
-                color: megaMenuOpen ? '#fff' : '#828383',
+                color: megaMenuOpen ? 'var(--text-primary)' : 'var(--text-muted)',
                 borderRadius: '20px', 
                 padding: '8px 18px', 
                 fontSize: '0.85rem',
@@ -135,7 +137,7 @@ export default function Navbar({
             whileTap={{ scale: 0.95 }}
             onClick={onSearchClick}
             aria-label="Search"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#888', padding: '4px' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: '4px' }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
@@ -149,12 +151,39 @@ export default function Navbar({
             whileTap={{ scale: 0.95 }}
             onClick={onAccountClick}
             aria-label="Account"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#888', padding: '4px' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: '4px' }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
+          </motion.button>
+
+          {/* Theme Toggle Icon */}
+          <motion.button 
+            whileHover={{ scale: 1.1, rotate: theme === 'dark' ? 45 : -45 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: '4px', display: 'flex', alignItems: 'center' }}
+          >
+            {theme === 'dark' ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            )}
           </motion.button>
 
           {/* Cart Icon */}
@@ -164,7 +193,7 @@ export default function Navbar({
             onClick={onCartClick}
             aria-label="Cart"
             style={{ 
-              background: 'none', border: 'none', cursor: 'pointer', color: '#888', 
+              background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', 
               padding: '4px', position: 'relative', display: 'flex', alignItems: 'center' 
             }}
           >
@@ -200,6 +229,12 @@ export default function Navbar({
         <span className="nav-mobile-link" onClick={() => handleCategoryClick('free')} style={{ cursor: 'pointer' }}>Free Assets</span>
         <span className="nav-mobile-link" onClick={onSupportClick} style={{ cursor: 'pointer' }}>Support</span>
         <span className="nav-mobile-link" onClick={() => { onLegalClick('terms'); closeMobile(); }} style={{ cursor: 'pointer' }}>Terms & Licensing</span>
+        <div style={{ padding: '14px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--border-primary)' }}>
+          <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 500 }}>Theme</span>
+          <button onClick={toggleTheme} style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)', color: 'var(--text-primary)', borderRadius: '8px', padding: '6px 14px', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', fontSize: '0.85rem', fontWeight: 600 }}>
+             {theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode'}
+          </button>
+        </div>
       </div>
 
       {/* ── Products MEGA MENU DROPDOWN ───────────────── */}
@@ -214,26 +249,26 @@ export default function Navbar({
             onMouseLeave={handleMouseLeave}
             style={{
               position: 'fixed', top: '64px', left: '5%', right: '5%',
-              background: '#141414', border: '1px solid #2b2b2b',
+              background: 'var(--bg-mega-menu)', border: '1px solid var(--border-secondary)',
               borderRadius: '0 0 16px 16px', zIndex: 199, padding: '32px 40px',
               boxShadow: '0 20px 40px rgba(0,0,0,0.8), 0 0 50px rgba(255,255,255,0.02)',
               display: 'grid', gridTemplateColumns: '220px 1fr', gap: '40px'
             }}
           >
             {/* Left Column - Sub Categories */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', borderRight: '1px solid #2b2b2b' }}>
-              <h3 style={{ fontFamily: 'Outfit', color: '#fff', fontSize: '1.25rem', fontWeight: 800, marginBottom: '4px' }}>Products</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', borderRight: '1px solid var(--border-secondary)' }}>
+              <h3 style={{ fontFamily: 'Outfit', color: 'var(--text-primary)', fontSize: '1.25rem', fontWeight: 800, marginBottom: '4px' }}>Products</h3>
               {navCategories.map((nc, idx) => (
                 <span
                   key={idx}
                   onClick={() => handleCategoryClick(nc.catId)}
                   style={{
-                    color: activeCategory === nc.catId ? '#22D3EE' : '#828383',
+                    color: activeCategory === nc.catId ? '#22D3EE' : 'var(--text-muted)',
                     fontFamily: 'Inter', fontSize: '0.9rem', fontWeight: 600,
                     cursor: 'pointer', transition: 'color 0.2s', display: 'block'
                   }}
                   onMouseEnter={e => e.target.style.color = '#22D3EE'}
-                  onMouseLeave={e => e.target.style.color = activeCategory === nc.catId ? '#22D3EE' : '#828383'}
+                  onMouseLeave={e => e.target.style.color = activeCategory === nc.catId ? '#22D3EE' : 'var(--text-muted)'}
                 >
                   {nc.label}
                 </span>
@@ -243,7 +278,7 @@ export default function Navbar({
             {/* Right Side - Most Popular Product Carousel */}
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                <span style={{ color: '#434343', fontFamily: 'Inter', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em' }}>MOST POPULAR</span>
+                <span style={{ color: 'var(--text-placeholder)', fontFamily: 'Inter', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em' }}>MOST POPULAR</span>
                 <span 
                   onClick={() => handleCategoryClick('all')} 
                   style={{ color: '#22D3EE', fontFamily: 'Inter', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
@@ -261,7 +296,7 @@ export default function Navbar({
                       key={b.id} 
                       onClick={() => { setMegaMenuOpen(false); navigate(`/bundle/${b.id}`); }}
                       style={{
-                        background: '#141414', border: '1px solid #2b2b2b',
+                        background: 'var(--bg-mega-menu)', border: '1px solid var(--border-secondary)',
                         borderRadius: '14px', padding: '14px', cursor: 'pointer',
                         transition: 'transform 0.25s, border-color 0.25s',
                         display: 'flex', flexDirection: 'column', alignItems: 'center',
@@ -306,13 +341,13 @@ export default function Navbar({
 
                       {/* Product details */}
                       <h4 style={{ 
-                        fontFamily: 'Outfit', color: '#fff', fontSize: '0.82rem', 
+                        fontFamily: 'Outfit', color: 'var(--text-primary)', fontSize: '0.82rem', 
                         fontWeight: 700, margin: '0 0 4px', lineHeight: 1.2,
                         minHeight: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center'
                       }}>
                         {b.name}
                       </h4>
-                      <span style={{ color: '#666', fontSize: '0.78rem', fontWeight: 600 }}>
+                      <span style={{ color: 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600 }}>
                         {b.price === 0 ? 'Rs. 0.00' : `Rs. ${b.price.toLocaleString()}.00`}
                       </span>
                     </div>

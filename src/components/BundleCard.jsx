@@ -60,33 +60,33 @@ export default function BundleCard({ bundle }) {
           {/* Preview */}
           <div style={{ position: 'relative', overflow: 'hidden', height: '150px', flexShrink: 0 }}>
             <img src={bundle.preview} alt={bundle.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60px', background: 'linear-gradient(transparent, #0f0f14)' }} />
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60px', background: 'linear-gradient(transparent, var(--bg-secondary))' }} />
           </div>
 
           {/* Body */}
           <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-            <h3 style={{ fontFamily: 'Outfit', fontWeight: 700, fontSize: '1rem', margin: '0 0 4px', color: '#fff' }}>
+            <h3 style={{ fontFamily: 'Outfit', fontWeight: 700, fontSize: '1rem', margin: '0 0 4px', color: 'var(--text-primary)' }}>
               {bundle.name}
             </h3>
-            <p style={{ color: '#666', fontSize: '0.78rem', margin: '0 0 12px', lineHeight: 1.5 }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.78rem', margin: '0 0 12px', lineHeight: 1.5 }}>
               {bundle.tagline}
             </p>
 
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 14px', display: 'flex', flexDirection: 'column', gap: '4px', flex: 1 }}>
               {bundle.includes.slice(0, 3).map((item, i) => (
-                <li key={i} style={{ color: '#bbb', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <li key={i} style={{ color: 'var(--text-secondary)', fontSize: '0.75rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <span style={{ color: bundle.color, fontSize: '0.6rem' }}>✦</span> {item}
                 </li>
               ))}
               {bundle.includes.length > 3 && (
-                <li style={{ color: '#444', fontSize: '0.75rem' }}>{bundle.includes.length - 3} more...</li>
+                <li style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>{bundle.includes.length - 3} more...</li>
               )}
             </ul>
 
             {/* Price */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
-              <span style={{ fontFamily: 'Outfit', fontWeight: 900, fontSize: '1.3rem', color: '#fff' }}>₹{bundle.price}</span>
-              <span style={{ color: '#444', textDecoration: 'line-through', fontSize: '0.82rem' }}>₹{bundle.originalPrice}</span>
+              <span style={{ fontFamily: 'Outfit', fontWeight: 900, fontSize: '1.3rem', color: 'var(--text-primary)' }}>₹{bundle.price}</span>
+              <span style={{ color: 'var(--text-muted)', textDecoration: 'line-through', fontSize: '0.82rem' }}>₹{bundle.originalPrice}</span>
               <span style={{ background: '#22c55e18', color: '#22c55e', borderRadius: '4px', padding: '2px 7px', fontSize: '0.68rem', fontWeight: 700 }}>
                 -{discount}%
               </span>

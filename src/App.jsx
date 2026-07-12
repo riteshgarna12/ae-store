@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import BundleDetail from './pages/BundleDetail';
@@ -102,10 +103,12 @@ function AppShell() {
 
 export default function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <AppShell />
-      </BrowserRouter>
-    </CartProvider>
+    <ThemeProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <AppShell />
+        </BrowserRouter>
+      </CartProvider>
+    </ThemeProvider>
   );
 }

@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 
 const inputStyle = (err) => ({
   width: '100%', boxSizing: 'border-box',
-  background: '#0c0c10', border: `1px solid ${err ? '#EF4444' : '#1e1e24'}`,
-  borderRadius: '10px', padding: '12px 14px', color: '#fff',
+  background: 'var(--bg-secondary)', border: `1px solid ${err ? '#EF4444' : 'var(--border-primary)'}`,
+  borderRadius: '10px', padding: '12px 14px', color: 'var(--text-primary)',
   fontFamily: 'Inter', fontSize: '0.9rem', outline: 'none',
   transition: 'border-color 0.2s, box-shadow 0.2s'
 });
@@ -75,17 +75,17 @@ export default function SupportDrawer({ onClose }) {
         style={{
           position: 'fixed', top: 0, right: 0, bottom: 0,
           width: 'min(460px, 92vw)', zIndex: 301,
-          background: 'rgba(10,10,14,0.97)', backdropFilter: 'blur(24px) saturate(180%)',
-          borderLeft: '1px solid rgba(124,58,237,0.1)',
+          background: 'var(--bg-modal)', backdropFilter: 'blur(24px) saturate(180%)',
+          borderLeft: '1px solid var(--border-drawer)',
           display: 'flex', flexDirection: 'column'
         }}
       >
         {/* Header */}
         <div style={{
-          padding: '20px 24px', borderBottom: '1px solid #151518',
+          padding: '20px 24px', borderBottom: '1px solid var(--border-secondary)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between'
         }}>
-          <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.3rem', margin: 0 }}>
+          <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.3rem', margin: 0, color: 'var(--text-primary)' }}>
             💬 Contact Support
           </h2>
           <motion.button
@@ -93,8 +93,8 @@ export default function SupportDrawer({ onClose }) {
             whileTap={{ scale: 0.9 }}
             onClick={onClose}
             style={{
-              background: 'rgba(255,255,255,0.05)', border: '1px solid #1e1e24',
-              color: '#888', borderRadius: '10px', width: '36px', height: '36px',
+              background: 'var(--bg-social-icon)', border: '1px solid var(--border-primary)',
+              color: 'var(--text-muted)', borderRadius: '10px', width: '36px', height: '36px',
               cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}
           >✕</motion.button>
@@ -113,9 +113,9 @@ export default function SupportDrawer({ onClose }) {
                 borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: '1.6rem', margin: '0 auto 20px', color: '#fff'
               }}>✓</div>
-              <h3 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.2rem', marginBottom: '8px' }}>Message Sent!</h3>
-              <p style={{ color: '#888', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '24px' }}>
-                We have received your ticket. Our support team will reach out to <span style={{ color: '#ccc' }}>{form.email}</span> within 12–24 hours.
+              <h3 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.2rem', marginBottom: '8px', color: 'var(--text-primary)' }}>Message Sent!</h3>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '24px' }}>
+                We have received your ticket. Our support team will reach out to <span style={{ color: 'var(--text-primary)' }}>{form.email}</span> within 12–24 hours.
               </p>
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -130,7 +130,7 @@ export default function SupportDrawer({ onClose }) {
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div>
-                <label style={{ color: '#888', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Full Name</label>
+                <label style={{ color: 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Full Name</label>
                 <input
                   type="text"
                   placeholder="Rahul Sharma"
@@ -142,7 +142,7 @@ export default function SupportDrawer({ onClose }) {
               </div>
 
               <div>
-                <label style={{ color: '#888', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Email Address</label>
+                <label style={{ color: 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Email Address</label>
                 <input
                   type="email"
                   placeholder="rahul@gmail.com"
@@ -154,7 +154,7 @@ export default function SupportDrawer({ onClose }) {
               </div>
 
               <div>
-                <label style={{ color: '#888', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Topic / Issue</label>
+                <label style={{ color: 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Topic / Issue</label>
                 <select
                   value={form.subject}
                   onChange={e => set('subject', e.target.value)}
@@ -176,7 +176,7 @@ export default function SupportDrawer({ onClose }) {
               </div>
 
               <div>
-                <label style={{ color: '#888', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Your Message</label>
+                <label style={{ color: 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600, display: 'block', marginBottom: '5px' }}>Your Message</label>
                 <textarea
                   rows={6}
                   placeholder="Explain your problem or inquiry in detail..."

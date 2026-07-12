@@ -28,15 +28,16 @@ export default function CartDrawer({ onClose, onCheckout }) {
         style={{
           position: 'fixed', top: 0, right: 0, bottom: 0,
           width: 'min(460px, 92vw)', zIndex: 301,
-          background: 'rgba(10,10,14,0.97)', backdropFilter: 'blur(24px) saturate(180%)',
-          borderLeft: '1px solid rgba(124,58,237,0.1)',
+          background: 'var(--bg-modal)', backdropFilter: 'blur(24px) saturate(180%)',
+          borderLeft: '1px solid var(--border-drawer)',
           display: 'flex', flexDirection: 'column'
         }}
       >
         {/* Header */}
         <div style={{
-          padding: '20px 24px', borderBottom: '1px solid #151518',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between'
+          padding: '20px 24px', borderBottom: '1px solid var(--border-secondary)',
+          display: 'flex', alignItems: 'center', justifyBetween: 'space-between',
+          color: 'var(--text-primary)'
         }}>
           <h2 style={{ fontFamily: 'Outfit', fontWeight: 800, fontSize: '1.3rem', margin: 0 }}>
             🛒 Your Cart
@@ -46,8 +47,8 @@ export default function CartDrawer({ onClose, onCheckout }) {
             whileTap={{ scale: 0.9 }}
             onClick={onClose}
             style={{
-              background: 'rgba(255,255,255,0.05)', border: '1px solid #1e1e24',
-              color: '#888', borderRadius: '10px', width: '36px', height: '36px',
+              background: 'var(--bg-social-icon)', border: '1px solid var(--border-primary)',
+              color: 'var(--text-muted)', borderRadius: '10px', width: '36px', height: '36px',
               cursor: 'pointer', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}
           >✕</motion.button>
@@ -58,8 +59,8 @@ export default function CartDrawer({ onClose, onCheckout }) {
           {cart.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '60px 0' }}>
               <div style={{ fontSize: '3rem', marginBottom: '14px' }}>🛒</div>
-              <p style={{ color: '#555', fontSize: '0.95rem', margin: '0 0 6px' }}>Your cart is empty</p>
-              <p style={{ color: '#333', fontSize: '0.82rem', margin: 0 }}>Add some bundles first</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', margin: '0 0 6px' }}>Your cart is empty</p>
+              <p style={{ color: 'var(--text-muted)', opacity: 0.8, fontSize: '0.82rem', margin: 0 }}>Add some bundles first</p>
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -70,16 +71,17 @@ export default function CartDrawer({ onClose, onCheckout }) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
                   style={{
-                    background: 'rgba(15,15,20,0.8)', border: '1px solid rgba(255,255,255,0.04)',
-                    borderRadius: '14px', padding: '14px', display: 'flex', alignItems: 'center', gap: '14px'
+                    background: 'var(--bg-secondary)', border: '1px solid var(--border-primary)',
+                    borderRadius: '14px', padding: '14px', display: 'flex', alignItems: 'center', gap: '14px',
+                    color: 'var(--text-primary)'
                   }}
                 >
                   <img src={item.preview} alt={item.name} style={{
                     width: '70px', height: '45px', objectFit: 'cover', borderRadius: '8px', flexShrink: 0
                   }} />
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <h4 style={{ fontFamily: 'Outfit', fontWeight: 700, fontSize: '0.88rem', margin: '0 0 2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.name}</h4>
-                    <p style={{ color: '#555', fontSize: '0.75rem', margin: 0 }}>{item.tagline}</p>
+                    <h4 style={{ fontFamily: 'Outfit', fontWeight: 700, fontSize: '0.88rem', margin: '0 0 2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', color: 'var(--text-primary)' }}>{item.name}</h4>
+                    <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem', margin: 0 }}>{item.tagline}</p>
                   </div>
                   <div style={{ textAlign: 'right', flexShrink: 0 }}>
                     <div style={{ fontFamily: 'Outfit', fontWeight: 900, fontSize: '1rem' }}>₹{item.price}</div>
@@ -99,18 +101,18 @@ export default function CartDrawer({ onClose, onCheckout }) {
 
         {/* Footer / Summary */}
         {cart.length > 0 && (
-          <div style={{ padding: '20px 24px', borderTop: '1px solid #151518' }}>
+          <div style={{ padding: '20px 24px', borderTop: '1px solid var(--border-secondary)' }}>
             <div style={{
               background: 'rgba(34,211,238,0.05)', border: '1px solid rgba(34,211,238,0.1)',
               borderRadius: '10px', padding: '10px 13px', marginBottom: '16px'
             }}>
-              <p style={{ color: '#555', fontSize: '0.75rem', margin: 0, lineHeight: 1.5 }}>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem', margin: 0, lineHeight: 1.5 }}>
                 🔒 Payment via UPI QR scan — 100% safe. Files delivered after verification.
               </p>
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-              <span style={{ color: '#888', fontSize: '0.9rem' }}>Total</span>
+              <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Total</span>
               <span style={{ fontFamily: 'Outfit', color: '#7C3AED', fontWeight: 900, fontSize: '1.5rem' }}>₹{total}</span>
             </div>
 
