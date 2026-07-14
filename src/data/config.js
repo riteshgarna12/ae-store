@@ -2,19 +2,19 @@
 // FIREBASE CONFIG — Replace with your own from Firebase Console
 // ============================================================
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 // ============================================================
 // YOUR UPI DETAILS — Replace with yours
 // ============================================================
-export const UPI_ID = "yourname@upi";           // e.g. john@paytm
-export const UPI_NAME = "Your Store Name";       // shown on QR
+export const UPI_ID = import.meta.env.VITE_UPI_ID;           // e.g. john@paytm
+export const UPI_NAME = import.meta.env.VITE_UPI_NAME;       // shown on QR
 export const INSTAGRAM_HANDLE = "@motionvault.in";   // for footer
 
 // ============================================================
