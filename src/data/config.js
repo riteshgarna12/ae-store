@@ -21,23 +21,49 @@ export const INSTAGRAM_HANDLE = "@motionvault.in";   // for footer
 // BUNDLES — Add/edit your packs here
 // ============================================================
 export const bundles = [
+    {
+    id: "AnimatedBG Pack",
+    name: "Animated Backgrounds Pack",
+    tagline: "100+ Looping backgrounds for your videos",
+    price: 99,
+    originalPrice: 199,
+    badge: "NEW",
+    color: "#3B82F6",
+    category: "pr",
+    includes: [
+      "100+ Looping Backgrounds",
+      "4K Resolution Support",
+      "Seamless Loops",
+      "Color Variations Included",
+      "Free Support"
+    ],
+    preview: "/AnimatedBG Pack.png",
+    features: "Perfect for presentations, social media, and more.",
+    specs: {
+      "Software": "Premiere Pro CC 2019+",
+      "File Size": "120 MB",
+      "Format": ".mp4 / .mov",
+      "Plugins": "None Required",
+      "License": "Commercial & Personal"
+    } 
+  },
   {
     id: "transitions-pro",
     name: "Transitions Pro Pack",
-    tagline: "120+ seamless transitions for any edit",
+    tagline: "50+ Advanced transitions for any edit",
     price: 299,
     originalPrice: 599,
     badge: "BESTSELLER",
     color: "#7C3AED",
     category: "ae",
     includes: [
-      "120 Smooth Transitions",
+      "50+ Advanced Transitions",
       "Glitch & Distortion FX",
       "Zoom & Spin Variants",
       "Tutorial Included",
       "Lifetime Updates"
     ],
-    preview: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    preview: "/Advanced Transition Pack.png",
     features: "Works with AE CC 2020 and above. No plugins needed.",
     specs: {
       "Software": "After Effects CC 2020+",
@@ -47,6 +73,33 @@ export const bundles = [
       "License": "Commercial & Personal"
     }
   },
+  {
+    id: "Text-Animations-Bundle",
+    name: "Text Animations Bundle",
+    tagline: "Dynamic text animations for your videos",
+    price: 149,
+    originalPrice: 299,
+    badge: "POPULAR",
+    color: "#F59E0B",
+    category: "ae",
+    includes: [
+      "100+ Text Animations",
+      "Kinetic Typography Styles",
+      "Lower Thirds Pack",
+      "Font Suggestions PDF",
+      "Free Support"
+    ],
+    preview: "/Advanced Text Pack.png",
+    features: "Easy to customize. Works with AE CC 2019+.",
+    specs: {
+      "Software": "Premiere Pro ",
+      "File Size": "95 MB",
+      "Format": ".aep Project File",
+      "Plugins": "None Required",
+      "License": "Commercial & Personal"
+    }
+  },
+
   {
     id: "titles-cinematic",
     name: "Cinematic Titles Bundle",
@@ -63,7 +116,7 @@ export const bundles = [
       "Font Suggestions PDF",
       "Free Support"
     ],
-    preview: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80",
+    preview: "/Cinematic Titles Bundle.png",
     features: "Easy to customize. Works with AE CC 2019+",
     specs: {
       "Software": "Premiere Pro CC 2019+",
@@ -89,7 +142,7 @@ export const bundles = [
       "Logo Reveal Pack",
       "Premium Support"
     ],
-    preview: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
+    preview: "/Motion Graphics Mega Kit.png",
     features: "The complete toolkit. AE CC 2020+ required.",
     specs: {
       "Software": "After Effects CC 2020+",
@@ -115,7 +168,7 @@ export const bundles = [
       "Noise & Grain Textures",
       "Video Tutorial"
     ],
-    preview: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+    preview: "/Glitch & VHS Effects.png",
     features: "Perfect for music videos and social content.",
     specs: {
       "Software": "Premiere Pro CC 2019+",
@@ -141,7 +194,7 @@ export const bundles = [
       "Lifetime Access",
       "Commercial Use Allowed"
     ],
-    preview: "https://images.unsplash.com/photo-1626544827763-d516dce335e2?auto=format&fit=crop&w=800&q=80",
+    preview: "/Minimal Typography Pack.png",
     features: "Quick to customize, drag and drop into your sequence.",
     downloadUrl: "https://drive.google.com/drive/folders/your-free-assets-drive-link",
     specs: {

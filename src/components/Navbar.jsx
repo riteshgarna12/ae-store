@@ -311,32 +311,24 @@ export default function Navbar({
                         e.currentTarget.style.borderColor = '#2b2b2b';
                       }}
                     >
-                      {/* CSS 3D Box Mockup representation */}
+                      {/* Preview image */}
                       <div style={{ 
-                        perspective: '400px', width: '70px', height: '90px', 
-                        marginBottom: '14px', position: 'relative' 
+                        width: '100%', height: '100px', 
+                        marginBottom: '10px', borderRadius: '8px', overflow: 'hidden',
+                        position: 'relative'
                       }}>
-                        <div style={{
-                          width: '100%', height: '100%', position: 'relative',
-                          transformStyle: 'preserve-3d', transform: 'rotateY(-20deg) rotateX(10deg)',
-                           background: `linear-gradient(135deg, ${b.color}, #1f1f2e)`,
-                          borderRadius: '4px', border: '1px solid rgba(255,255,255,0.08)',
-                          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                          boxShadow: '4px 8px 16px rgba(0,0,0,0.5)'
-                        }}>
-                          <span style={{ fontSize: '0.85rem', fontWeight: 900, color: '#fff' }}>
-                            {b.id === 'free-titles' ? '15x' : b.id === 'transitions-pro' ? '120' : '80'}
-                          </span>
-                          <span style={{ fontSize: '0.45rem', fontWeight: 700, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.05em', marginTop: '2px' }}>
-                            PACK
-                          </span>
-                          {/* Spine edge */}
-                          <div style={{
-                            position: 'absolute', top: 0, right: '-10px', width: '10px', height: '100%',
-                            background: b.color, transform: 'rotateY(90deg)', transformOrigin: 'left center',
-                            opacity: 0.8
-                          }} />
-                        </div>
+                        <img 
+                          src={b.preview} 
+                          alt={b.name} 
+                          style={{ 
+                            width: '100%', height: '100%', 
+                            objectFit: 'cover', display: 'block' 
+                          }} 
+                        />
+                        <div style={{ 
+                          position: 'absolute', bottom: 0, left: 0, right: 0, height: '30px', 
+                          background: 'linear-gradient(transparent, var(--bg-mega-menu))' 
+                        }} />
                       </div>
 
                       {/* Product details */}
