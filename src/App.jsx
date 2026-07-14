@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import BundleDetail from './pages/BundleDetail';
+import Admin from './pages/Admin';
 import CartDrawer from './pages/Cart';
 import CheckoutModal from './pages/Checkout';
 import SupportDrawer from './components/SupportDrawer';
@@ -77,6 +78,7 @@ function AppShell() {
           } 
         />
         <Route path="/bundle/:id" element={<BundleDetail onCartClick={openCart} />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
 
       <AnimatePresence>

@@ -169,6 +169,24 @@ export default function AccountDrawer({ onClose }) {
                         <span>Total: ₹{order.total}</span>
                         <span>{order.createdAt ? new Date(order.createdAt.seconds * 1000).toLocaleDateString() : ''}</span>
                       </div>
+                      {order.status === 'completed' && order.downloadUrl && (
+                        <motion.a 
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          href={order.downloadUrl} 
+                          target="_blank" 
+                          rel="noreferrer"
+                          style={{
+                            display: 'block', textDecoration: 'none', textAlign: 'center',
+                            background: 'linear-gradient(135deg, #10B981, #059669)',
+                            color: '#fff', borderRadius: '8px', padding: '8px',
+                            fontWeight: 700, fontSize: '0.8rem', marginTop: '10px',
+                            cursor: 'pointer'
+                          }}
+                        >
+                          ⬇️ Download Assets
+                        </motion.a>
+                      )}
                     </div>
                   ))}
                 </div>
